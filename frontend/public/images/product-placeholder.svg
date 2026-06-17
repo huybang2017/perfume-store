@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" fill="none" role="img" aria-label="Product placeholder">
+  <rect width="400" height="500" fill="#f1f5f9"/>
+  <path d="M120 130c0-28 22-50 50-50h60c28 0 50 22 50 50v18l44 36c8 7 12 17 12 28v168c0 22-18 40-40 40H104c-22 0-40-18-40-40V212c0-11 4-21 12-28l44-36v-18z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="4"/>
+  <path d="M160 80c0-11 9-20 20-20h40c11 0 20 9 20 20v50h-80V80z" fill="#cbd5e1"/>
+  <circle cx="200" cy="255" r="42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <path d="M188 255h24M200 243v24" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+</svg>
