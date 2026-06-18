@@ -1,12 +1,12 @@
 import {
   boolean,
-  mysqlTable,
+  pgTable,
   text,
   timestamp,
   varchar,
-} from 'drizzle-orm/mysql-core';
+} from 'drizzle-orm/pg-core';
 
-export const notifications = mysqlTable('notifications', {
+export const notifications = pgTable('notifications', {
   id: varchar('id', { length: 36 }).primaryKey(),
   userId: varchar('user_id', { length: 36 }).notNull(),
   title: varchar('title', { length: 255 }).notNull(),

@@ -4,7 +4,7 @@
 
 - Docker & Docker Compose
 - Domain + reverse proxy (Nginx/Caddy) recommended for HTTPS
-- MySQL 8.4+ and Redis 7+ (included in compose)
+- PostgreSQL 16+ and Redis 7+ (included in compose)
 
 ## 1. Configure secrets
 
@@ -31,7 +31,7 @@ Services:
 |----------|------|--------------------------------|
 | Frontend | 3000 | Next.js standalone             |
 | Backend  | 4000 | API prefix `/api/v1`           |
-| MySQL    | —    | Internal network only          |
+| PostgreSQL | —  | Internal network only          |
 | Redis    | —    | Internal network only          |
 
 Health check: `GET http://localhost:4000/api/v1/health`
@@ -56,10 +56,10 @@ Set `FRONTEND_URL`, `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_WS_URL` to your public U
 ## 5. Security checklist
 
 - [ ] Strong `JWT_SECRET` (32+ characters)
-- [ ] Unique MySQL/Redis passwords
+- [ ] Unique PostgreSQL/Redis passwords
 - [ ] `NODE_ENV=production` (disables Swagger)
 - [ ] HTTPS only in production
-- [ ] Firewall: expose only 80/443, not 3306/6379
+- [ ] Firewall: expose only 80/443, not 5432/6379
 - [ ] Change default admin password after seed
 - [ ] Review CORS `FRONTEND_URL` matches your domain exactly
 

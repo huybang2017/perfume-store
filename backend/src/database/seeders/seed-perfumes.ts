@@ -130,7 +130,10 @@ async function seed() {
     await db
       .insert(categories)
       .values({ id: randomUUID(), ...def })
-      .onDuplicateKeyUpdate({ set: { name: def.name, description: def.description } });
+      .onConflictDoUpdate({
+        target: categories.slug,
+        set: { name: def.name, description: def.description },
+      });
     const [row] = await db
       .select({ id: categories.id })
       .from(categories)
@@ -148,7 +151,7 @@ async function seed() {
     await db
       .insert(brands)
       .values({ id: randomUUID(), name, slug })
-      .onDuplicateKeyUpdate({ set: { name } });
+      .onConflictDoUpdate({ target: brands.slug, set: { name } });
     const [row] = await db
       .select({ id: brands.id })
       .from(brands)
@@ -183,7 +186,8 @@ async function seed() {
         isActive: true,
         status: 'active',
       })
-      .onDuplicateKeyUpdate({
+      .onConflictDoUpdate({
+        target: products.slug,
         set: {
           name: item.name,
           price: String(item.decantPrice),

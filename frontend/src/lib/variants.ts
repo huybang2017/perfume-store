@@ -2,7 +2,6 @@ import { vi } from '@/lib/i18n';
 import { resolveMediaUrl } from '@/lib/images';
 import {
   getProductThumbnailFallback,
-  withDefaultProductImages,
 } from '@/lib/product-images';
 import type { Product, ProductVariant } from '@/types/api';
 

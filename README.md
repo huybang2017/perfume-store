@@ -4,7 +4,7 @@ Enterprise e-commerce platform for clothing retail — feature-based NestJS API 
 
 ## Architecture
 
-- **Backend**: NestJS, Drizzle ORM, MySQL, JWT/Passport, Redis cache, Socket.IO, Swagger
+- **Backend**: NestJS, Drizzle ORM, PostgreSQL, JWT/Passport, Redis cache, Socket.IO, Swagger
 - **Frontend**: Next.js 15 App Router, Redux Toolkit + RTK Query, Shadcn UI, TailwindCSS
 - **Pattern**: Controller → Service → Repository → Drizzle (no direct DB access in controllers)
 
@@ -20,12 +20,12 @@ clothing-store/
 ### Prerequisites
 
 - Node.js 20+
-- Docker (optional, for MySQL + Redis)
+- Docker (optional, for PostgreSQL + Redis)
 
 ### 1. Infrastructure
 
 ```bash
-docker compose up -d mysql redis
+docker compose up -d postgres redis
 ```
 
 ### 2. Backend

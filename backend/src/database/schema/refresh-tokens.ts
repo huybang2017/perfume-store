@@ -1,6 +1,6 @@
-import { mysqlTable, timestamp, varchar } from 'drizzle-orm/mysql-core';
+import { pgTable, timestamp, varchar } from 'drizzle-orm/pg-core';
 
-export const refreshTokens = mysqlTable('refresh_tokens', {
+export const refreshTokens = pgTable('refresh_tokens', {
   id: varchar('id', { length: 36 }).primaryKey(),
   userId: varchar('user_id', { length: 36 }).notNull(),
   tokenHash: varchar('token_hash', { length: 64 }).notNull(),

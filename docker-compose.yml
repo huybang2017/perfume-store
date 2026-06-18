@@ -1,18 +1,17 @@
 services:
-  mysql:
-    image: mysql:8.4
-    container_name: perfume-store-mysql
+  postgres:
+    image: postgres:16-alpine
+    container_name: perfume-store-postgres
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: perfume_store
-      MYSQL_USER: perfume
-      MYSQL_PASSWORD: perfume
+      POSTGRES_DB: perfume_store
+      POSTGRES_USER: perfume
+      POSTGRES_PASSWORD: perfume
     ports:
-      - '3306:3306'
+      - '5432:5432'
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      test: ['CMD-SHELL', 'pg_isready -U perfume']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -37,14 +36,14 @@ services:
   #   environment:
   #     NODE_ENV: development
   #     PORT: 4000
-  #     DATABASE_URL: mysql://clothing:clothing@mysql:3306/clothing_store
+  #     DATABASE_URL: postgresql://clothing:clothing@postgres:5432/clothing_store
   #     REDIS_HOST: redis
   #     REDIS_PORT: 6379
   #     JWT_SECRET: change-me-in-production
   #     JWT_EXPIRES_IN: 7d
   #     FRONTEND_URL: http://localhost:3000
   #   depends_on:
-  #     mysql:
+  #     postgres:
   #       condition: service_healthy
   #     redis:
   #       condition: service_started
@@ -67,5 +66,5 @@ services:
   #     - backend
 
 volumes:
-  mysql_data:
+  postgres_data:
   redis_data:

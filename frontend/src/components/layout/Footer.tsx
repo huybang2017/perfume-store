@@ -15,13 +15,6 @@ const accountLinks = [
   { href: ROUTES.cart, label: vi.nav.cart },
 ];
 
-const aboutLinks = [
-  { href: ROUTES.company.ourStory, label: vi.company.nav.ourStory },
-  { href: ROUTES.company.vision, label: vi.company.nav.vision },
-  { href: ROUTES.company.mission, label: vi.company.nav.mission },
-  { href: ROUTES.company.coreValues, label: vi.company.nav.coreValues },
-];
-
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-secondary bg-secondary text-white">

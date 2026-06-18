@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/common/ProductCard';
 import { ProductGridSkeleton } from '@/components/common/ProductGridSkeleton';
@@ -11,9 +11,9 @@ import { vi } from '@/lib/i18n';
 import { ROUTES } from '@/constants/routes';
 import { ShopByCategorySection } from '@/features/home/components/ShopByCategorySection';
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
 };
 
 const staggerContainer = {
@@ -89,6 +89,7 @@ export default function HomePage() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative aspect-[4/5] md:aspect-square overflow-hidden rounded-sm bg-secondary group shadow-2xl"
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=1000"
               alt="Luxury Perfume"

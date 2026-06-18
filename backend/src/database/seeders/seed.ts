@@ -26,7 +26,10 @@ async function seed() {
       fullName: 'Quản trị viên',
       role: 'admin',
     })
-    .onDuplicateKeyUpdate({ set: { fullName: 'Quản trị viên' } });
+    .onConflictDoUpdate({
+      target: users.email,
+      set: { fullName: 'Quản trị viên' },
+    });
 
   const categoryId = randomUUID();
   await db
@@ -38,7 +41,7 @@ async function seed() {
       description: 'Thời trang nam',
       sortOrder: 1,
     })
-    .onDuplicateKeyUpdate({ set: { name: 'Nam' } });
+    .onConflictDoUpdate({ target: categories.slug, set: { name: 'Nam' } });
 
   const brandId = randomUUID();
   await db
@@ -48,7 +51,7 @@ async function seed() {
       name: 'Classic Wear',
       slug: 'classic-wear',
     })
-    .onDuplicateKeyUpdate({ set: { name: 'Classic Wear' } });
+    .onConflictDoUpdate({ target: brands.slug, set: { name: 'Classic Wear' } });
 
   await db
     .insert(products)
@@ -66,7 +69,8 @@ async function seed() {
       stock: 100,
       isFeatured: true,
     })
-    .onDuplicateKeyUpdate({
+    .onConflictDoUpdate({
+      target: products.slug,
       set: {
         name: 'Áo thun cotton cổ điển',
         price: '299000',
@@ -90,7 +94,8 @@ async function seed() {
       usedCount: 0,
       isActive: true,
     })
-    .onDuplicateKeyUpdate({
+    .onConflictDoUpdate({
+      target: vouchers.code,
       set: {
         description: 'Giảm 10% cho đơn từ 500.000 ₫',
         type: 'percentage',
@@ -109,7 +114,7 @@ async function seed() {
     await db
       .insert(settings)
       .values({ id: randomUUID(), ...s })
-      .onDuplicateKeyUpdate({ set: { value: s.value } });
+      .onConflictDoUpdate({ target: settings.key, set: { value: s.value } });
   }
 
   console.log('Seed hoàn tất.');

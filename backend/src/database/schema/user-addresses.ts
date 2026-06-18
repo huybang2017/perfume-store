@@ -1,11 +1,11 @@
 import {
   boolean,
-  mysqlTable,
+  pgTable,
   timestamp,
   varchar,
-} from 'drizzle-orm/mysql-core';
+} from 'drizzle-orm/pg-core';
 
-export const userAddresses = mysqlTable('user_addresses', {
+export const userAddresses = pgTable('user_addresses', {
   id: varchar('id', { length: 36 }).primaryKey(),
   userId: varchar('user_id', { length: 36 }).notNull(),
   label: varchar('label', { length: 50 }),
@@ -17,7 +17,10 @@ export const userAddresses = mysqlTable('user_addresses', {
   street: varchar('street', { length: 255 }).notNull(),
   isDefault: boolean('is_default').notNull().default(false),
   createdAt: timestamp('created_at').defaultNow().notNull(),
-  updatedAt: timestamp('updated_at').defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp('updated_at')
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
 });
 
 export type UserAddress = typeof userAddresses.$inferSelect;
