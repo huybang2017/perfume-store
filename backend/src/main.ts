@@ -20,13 +20,13 @@ async function bootstrap() {
 
   app.setGlobalPrefix(API_PREFIX);
 
-  const frontendUrl = config.get<string>('FRONTEND_URL');
-  app.enableCors({
-    origin: frontendUrl,
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  });
+
+    app.enableCors({
+      origin: true, // cho phép tất cả origin gửi request
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    });
 
   app.useGlobalPipes(
     new ValidationPipe({
