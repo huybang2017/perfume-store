@@ -93,6 +93,11 @@ export default function ProductDetailPage() {
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
           {product.name}
         </h1>
+        {selectedVariant && (
+          <p className="mt-2 text-sm text-slate-500 uppercase tracking-wider">
+            {vi.product.sku}: {selectedVariant.sku}
+          </p>
+        )}
         <div className="mt-4 flex items-baseline gap-3">
           <span className="text-2xl font-semibold text-slate-900">
             {selectedVariant

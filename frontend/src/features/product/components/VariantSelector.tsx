@@ -150,7 +150,7 @@ export function VariantSelector({
                       className={cn(
                         'group relative flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all',
                         active
-                          ? 'border-blue-600 ring-2 ring-blue-600/30'
+                          ? 'border-primary ring-2 ring-primary/30'
                           : 'border-slate-200 hover:border-slate-400',
                         disabled && 'cursor-not-allowed opacity-35',
                         outOfCombo && !disabled && 'opacity-50',
@@ -185,7 +185,7 @@ export function VariantSelector({
                       'min-w-[2.75rem] rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors',
                       isSize && 'min-w-[3rem]',
                       active
-                        ? 'border-blue-600 bg-blue-600 text-white shadow-sm'
+                        ? 'border-primary bg-primary text-white shadow-sm'
                         : 'border-slate-200 bg-white text-slate-800 hover:border-slate-300',
                       disabled && 'cursor-not-allowed opacity-35 line-through',
                       outOfCombo &&
@@ -209,42 +209,10 @@ export function VariantSelector({
         </p>
       )}
 
-      {matchedVariant ? (
-        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm">
-          <div className="flex flex-wrap items-baseline gap-2">
-            <span className="text-slate-500">{vi.product.price}:</span>
-            <span className="text-lg font-semibold text-slate-900">
-              {formatVND(matchedVariant.price)}
-            </span>
-            {matchedVariant.comparePrice != null &&
-              matchedVariant.comparePrice > matchedVariant.price && (
-                <span className="text-base text-slate-400 line-through">
-                  {formatVND(matchedVariant.comparePrice)}
-                </span>
-              )}
-          </div>
-          <p className="mt-2">
-            <span className="text-slate-500">{vi.product.sku}:</span>{' '}
-            <span className="font-medium text-slate-900">{matchedVariant.sku}</span>
-          </p>
-          <p className="mt-1">
-            <span className="text-slate-500">{vi.product.stock}:</span>{' '}
-            <span
-              className={cn(
-                'font-medium',
-                matchedVariant.stock < 1 ? 'text-red-600' : 'text-emerald-700',
-              )}
-            >
-              {stockStatusMessage(matchedVariant.stock)}
-            </span>
-          </p>
-        </div>
-      ) : (
-        allOptionsChosen && (
-          <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
-            {vi.product.combinationUnavailable}
-          </p>
-        )
+      {allOptionsChosen && !matchedVariant && (
+        <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+          {vi.product.combinationUnavailable}
+        </p>
       )}
     </div>
   );

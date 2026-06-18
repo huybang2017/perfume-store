@@ -105,7 +105,7 @@ export function ShopFiltersPanel({
                   type="checkbox"
                   checked={filters.brands.includes(b.slug)}
                   onChange={() => toggleBrand(b.slug)}
-                  className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                  className="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary"
                 />
                 <span className="text-slate-700">{b.name}</span>
               </label>
@@ -125,7 +125,7 @@ export function ShopFiltersPanel({
                 onClick={() => toggleList('colors', c)}
                 className={`rounded-full border px-3 py-1 text-sm transition-colors ${
                   filters.colors.includes(c)
-                    ? 'border-blue-600 bg-blue-600 text-white'
+                    ? 'border-primary bg-primary text-white shadow-sm'
                     : 'border-slate-200 text-slate-700 hover:border-slate-300'
                 }`}
               >
@@ -147,7 +147,7 @@ export function ShopFiltersPanel({
                 onClick={() => toggleList('sizes', s)}
                 className={`min-w-[2.5rem] rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
                   filters.sizes.includes(s)
-                    ? 'border-blue-600 bg-blue-600 text-white'
+                    ? 'border-primary bg-primary text-white shadow-sm'
                     : 'border-slate-200 text-slate-700 hover:border-slate-300'
                 }`}
               >

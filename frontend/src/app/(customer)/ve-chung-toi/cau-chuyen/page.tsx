@@ -26,19 +26,6 @@ export default function OurStoryPage() {
         </p>
         <footer className="mt-3 text-sm text-slate-600">— {content.quoteAuthor}</footer>
       </blockquote>
-
-      <section>
-        <h2 className="mb-6 text-lg font-semibold text-slate-900">{content.milestonesTitle}</h2>
-        <ol className="relative space-y-6 border-l-2 border-blue-100 pl-6">
-          {content.milestones.map(({ year, label }) => (
-            <li key={year} className="relative">
-              <span className="absolute -left-[1.6rem] top-1 flex h-3 w-3 rounded-full bg-blue-500 ring-4 ring-white" />
-              <span className="text-sm font-semibold text-blue-600">{year}</span>
-              <p className="mt-0.5 text-sm text-slate-700">{label}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
     </div>
   );
 }

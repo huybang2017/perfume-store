@@ -124,13 +124,13 @@ export function ShopActiveFilters({
         <Badge
           key={chip.key}
           variant="default"
-          className="gap-1 bg-blue-50 pr-1 text-blue-700 hover:bg-blue-100"
+          className="gap-1 bg-amber-50 pr-1 text-amber-700 hover:bg-amber-100 ring-1 ring-amber-200"
         >
           {chip.label}
           <button
             type="button"
             onClick={chip.clear}
-            className="rounded p-0.5 hover:bg-blue-200/60"
+            className="rounded p-0.5 hover:bg-amber-200/60"
             aria-label={`${vi.common.delete} ${chip.label}`}
           >
             <X className="h-3 w-3" />
